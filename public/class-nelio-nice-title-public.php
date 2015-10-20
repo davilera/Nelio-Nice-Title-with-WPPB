@@ -100,4 +100,24 @@ class Nelio_Nice_Title_Public {
 
 	}
 
+	/**
+	 * Modifies the title of the given post and appends Nelio's Nice Title (if any).
+	 *
+	 * @param   string   $title   the post title.
+	 * @param   int      $id      the ID of the post.
+	 *
+	 * @return  string   the original title with Nelio's Nice Title appended (if any).
+	 *
+	 * @since    1.0.0
+	 */
+	public function append_nice_title( $title, $id ) {
+
+		$nice_title = get_post_meta( $id, '_nelio_nice_title', true );
+		if ( ! empty( $nice_title ) ) {
+			$title = $title . '&mdash;' . $nice_title;
+		}
+		return $title;
+
+	}
+
 }
